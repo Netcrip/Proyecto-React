@@ -87,7 +87,7 @@ const ProductDetail = () => {
             clipRule="evenodd"
           />
         </svg>
-        Volver a productos
+        Volver
       </button>
       <div className="bg-white rounded-lg shadow p-6">
         <div className="flex flex-col md:flex-row gap-8">

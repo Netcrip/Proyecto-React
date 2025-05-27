@@ -1,21 +1,42 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
     <nav className="bg-gray-700 text-white p-4">
       <div className="container mx-auto flex gap-6">
-        <Link to="/" className="hover:text-gray-300">
+        <NavLink 
+          to="/" 
+          className={({ isActive }) => 
+            `hover:text-gray-300 ${isActive ? "text-yellow-400 font-bold" : ""}`
+          }
+          end
+        >
           Inicio
-        </Link>
-        <Link to="/products" className="hover:text-gray-300">
+        </NavLink>
+        <NavLink 
+          to="/products" 
+          className={({ isActive }) => 
+            `hover:text-gray-300 ${isActive ? "text-yellow-400 font-bold" : ""}`
+          }
+        >
           Productos
-        </Link>
-        <Link to="/offer" className="hover:text-gray-300">
+        </NavLink>
+        <NavLink 
+          to="/offer" 
+          className={({ isActive }) => 
+            `hover:text-gray-300 ${isActive ? "text-yellow-400 font-bold" : ""}`
+          }
+        >
           Ofertas
-        </Link>
-        <Link to="/contact" className="hover:text-gray-300">
+        </NavLink>
+        <NavLink 
+          to="/contact" 
+          className={({ isActive }) => 
+            `hover:text-gray-300 ${isActive ? "text-yellow-400 font-bold" : ""}`
+          }
+        >
           Contacto
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );

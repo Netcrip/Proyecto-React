@@ -58,7 +58,9 @@ const GalleryOffer = () => {
 
   if (error) {
     return (
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto mt-24 py-8">
+        <div className="mb-6">
+          <div className="mb-4">
         <div className="text-center py-8 text-red-500">
           Error al cargar productos: {error}
           <button
@@ -67,10 +69,12 @@ const GalleryOffer = () => {
           >
             Reintentar
           </button>
+          </div>
+          </div>
         </div>
       </div>
     );
-  }
+  } 
 
   return (
     <div className="container mx-auto mt-24 py-8">

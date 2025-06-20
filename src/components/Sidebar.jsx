@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext";
-import { XMarkIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { FiX, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -26,57 +26,6 @@ const Sidebar = () => {
       position: "top-center",
       icon: "⚠️",
     });
-  };
-
-  const handleCheckOut = () => {
-    if (!isAuthenticated()) {
-      toast((t) => (
-        <div className="flex items-center bg-red-50 p-6 text-lg rounded-lg border border-red-100 min-w-[500px]">
-          <span className="text-red-800 font-medium">
-            Debes iniciar sesión para finalizar la compra
-          </span>
-          <button
-            onClick={() => {
-              navigate("/login", { state: { from: "checkout" } });
-              toast.dismiss(t.id);
-            }}
-            className="ml-6 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-          >
-            Iniciar sesión
-          </button>
-        </div>
-      ), {
-        duration: 8000,
-        position: "top-center",
-        style: {
-          background: 'transparent',
-          boxShadow: 'none',
-          padding: 0,
-          margin: '0.5rem' // Aumenta el margen exterior
-        }
-      });
-      return;
-    }
-    if (cartItems.length === 0) {
-      toast.error("Tu carrito está vacío");
-      return;
-    }
-    try {
-      cartItems.forEach((item) => {
-        removeFromCart(item.id);
-      });
-      toast.success("¡Gracias por tu compra!", {
-        duration: 4000,
-        position: "top-center",
-      });
-      toggleSidebar();
-    } catch (error) {
-      toast.error("Ocurrió un error al procesar tu compra", {
-        duration: 4000,
-        position: "top-center",
-      });
-      console.error("Error en checkout:", error);
-    }
   };
 
   const handleQuantityChange = (item, newQuantity) => {
@@ -109,6 +58,34 @@ const Sidebar = () => {
       e.preventDefault();
       e.stopPropagation();
       toggleSidebar();
+    }
+  };
+
+  
+  const handleCheckOut = () => {
+    if (!isAuthenticated()) {      
+              navigate("/login", { state: { from: "checkout" } });
+      return;
+    }
+    if (cartItems.length === 0) {
+      toast.error("Tu carrito está vacío");
+      return;
+    }
+    try {
+      cartItems.forEach((item) => {
+        removeFromCart(item.id);
+      });
+      toast.success("¡Gracias por tu compra!", {
+        duration: 4000,
+        position: "top-center",
+      });
+      toggleSidebar();
+    } catch (error) {
+      toast.error("Ocurrió un error al procesar tu compra", {
+        duration: 4000,
+        position: "top-center",
+      });
+      console.error("Error en checkout:", error);
     }
   };
 
@@ -147,7 +124,7 @@ const Sidebar = () => {
               className="text-gray-500 hover:text-gray-700"
               aria-label="Cerrar carrito"
             >
-              <XMarkIcon className="h-6 w-6" />
+              <FiX className="h-6 w-6" />
             </button>
           </div>
           <div className="flex-1 overflow-y-auto p-4">
@@ -213,7 +190,7 @@ const Sidebar = () => {
                           onClick={() => handleRemoveItem(item.id)}
                           className="text-red-500 hover:text-red-700"
                         >
-                          <TrashIcon className="h-5 w-5" />
+                          <FiTrash2 className="h-5 w-5" />
                         </button>
                       </div>
                     </div>
@@ -233,7 +210,7 @@ const Sidebar = () => {
                 disabled={cartItems.length === 0}
                 className={`w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 ${
                   !isAuthenticated() || cartItems.length === 0
-                    ? "opacity-50 cursor-not-allowed"
+                    ? "opacity-80"
                     : ""
                 }`}
               >

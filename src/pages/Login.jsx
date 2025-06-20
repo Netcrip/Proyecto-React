@@ -20,7 +20,7 @@ const Login = () => {
         isAdmin: email === "admin@example.com",
       };
       login(userData);
-      toast.success(isLogin ? "Inicio de sesión exitoso" : "Registro exitoso");
+      toast.success(isLogin ? "Inicio de sesión exitoso" : "Registro exitoso",  {duration: 4000,position: "top-center"});
       navigate("/");
     } else {
       toast.error("Por favor completa todos los campos");

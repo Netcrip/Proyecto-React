@@ -24,9 +24,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+  return new Promise((resolve) => {
     setUser(null);
     localStorage.removeItem("user");
-  };
+    resolve(); 
+  });
+};
 
   return (
     <AuthContext.Provider

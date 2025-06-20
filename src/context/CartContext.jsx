@@ -1,15 +1,23 @@
-import { createContext, useState, useCallback } from "react";
+import { createContext, useState, useCallback, useEffect } from "react";
 import toast from "react-hot-toast";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = useCallback(() => {
     setIsSidebarOpen((prev) => !prev);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (product) => {
     const existingItem = cartItems.find((item) => item.id === product.id);

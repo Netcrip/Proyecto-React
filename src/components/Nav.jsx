@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const Nav = () => {
   return (
     <nav className="bg-gray-700 text-white p-4">
-      <div className="container mx-auto flex gap-6">
+      <div className="w-full mx-auto flex gap-6 px-4 md:px-8">
         <NavLink 
           to="/" 
           className={({ isActive }) => 

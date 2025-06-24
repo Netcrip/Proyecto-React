@@ -3,12 +3,20 @@ import Sidebar from "../components/Sidebar";
 
 const Products = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-grow">
-        <Gallery />
-      </main>
-      <Sidebar />
-    </div>
+    <>
+      <title>Productos | Mi E-commerce</title>
+      <meta
+        name="description"
+        content="Explora nuestra colección de productos"
+      />
+
+      <div className="min-h-screen flex flex-col">
+        <main className="flex-grow">
+          <Gallery />
+        </main>
+        <Sidebar />
+      </div>
+    </>
   );
 };
 

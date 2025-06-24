@@ -1,12 +1,79 @@
-# React + Vite
+# 🛍️ Mi E-Commerce - Tienda Online React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una solución completa de comercio electrónico desarrollada con el stack moderno de React que ofrece todas las funcionalidades esenciales para una tienda online.
 
-Currently, two official plugins are available:
+## 🌟 Características destacadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🛒 Experiencia de compra
+- Carrito de compras persistente (localStorage)
+- Sidebar móvil para gestión del carrito
+- Cálculo automático de totales
+- Gestión de cantidades y stock
+- Proceso de checkout simulado
 
-## Expanding the ESLint configuration
+### 🔐 Seguridad y usuarios
+- Sistema de autenticación completo (Simulado)
+- Roles de usuario (cliente/administrador)
+- Protección de rutas privadas
+- Perfil de usuario
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🛠 Panel de administración
+- CRUD completo de productos
+- Búsqueda y filtrado avanzado
+- Formularios de validación
+- Modales para edición/creación
+- Visualización de estadísticas
+
+### 🎨 Diseño y UX
+- Interfaz moderna con Tailwind CSS
+- 100% responsive (mobile-first)
+- Animaciones y transiciones
+- Feedback visual con toast notifications
+
+
+## 💻 Stack tecnológico
+
+### Frontend
+| Tecnología | Uso |
+|------------|-----|
+| React 18 | Componentes funcionales y hooks |
+| React Router 6 | Navegación y rutas protegidas |
+| Context API | Gestión de estado global |
+| Tailwind CSS | Estilizado y diseño responsive |
+| Axios | Conexión con API |
+| React Icons | Librería de iconos |
+| React Hot Toast | Notificaciones |
+|SEO - React 19v |Gestion Titulo & metadata|
+
+### Backend (Mock)
+```bash
+MockAPI.io - API REST simulada
+```
+## Instalación
+
+### Instala las dependencias:
+```bash
+cd mi-ecommerce
+npm install
+```
+### Configuracion Variable de entorno:
+```env
+VITE_API_BASE_URL=https://6840cad8d48516d1d3597317.mockapi.io/api/web (tu url de mockapi.io)
+```
+### Inicia la aplicación:
+```bash
+npm run dev
+```
+## Estructura del Proyecto
+```bash
+src/
+├── components/       # Componentes reutilizables
+├── context/          # Contextos de React
+├── pages/            # Páginas de la aplicación
+├── services/         # Servicios API
+├── routes/           # Rutas
+├── assets/           # Assets estáticos
+├── App.jsx           # Componente principal
+└── main.jsx          # Punto de entrada
+```
+

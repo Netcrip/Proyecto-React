@@ -10,21 +10,27 @@ const App = () => {
   const { isSidebarOpen } = useContext(CartContext);
 
   return (
-    <div
-      className={`flex flex-col min-h-screen ${
-        isSidebarOpen ? "overflow-hidden" : ""
-      }`}
-    >
-      <header className="fixed top-0 w-full z-30 bg-white shadow-sm">
-        <Header />
-        <Nav />
-      </header>
-      <main className="flex-grow ">
-        <Outlet />
-      </main>
-      <Footer />
-      <Sidebar />
-    </div>
+    <>
+      <html lang="es" />
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <div
+        className={`flex flex-col min-h-screen ${
+          isSidebarOpen ? "overflow-hidden" : ""
+        }`}
+      >
+        <header className="fixed top-0 w-full z-30 bg-white shadow-sm">
+          <Header />
+          <Nav />
+        </header>
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+        <Footer />
+        <Sidebar />
+      </div>
+    </>
   );
 };
 

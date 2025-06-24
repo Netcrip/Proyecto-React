@@ -70,96 +70,111 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="container mx-auto mt-30 py-8">
-       <button
-        onClick={() => navigate(-1)} 
-        className="mb-4 flex items-center text-blue-600 hover:text-blue-800"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 mr-1"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-            clipRule="evenodd"
-          />
-        </svg>
-        Volver
-      </button>
-      <div className="bg-white rounded-lg shadow p-6">
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="w-full md:w-1/2">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-auto max-h-96 object-contain rounded-lg"
-            />
-          </div>
-          <div className="w-full md:w-1/2">
-            <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-            <p className="text-gray-600 text-lg mb-4">{product.brand}</p>
+    <>
+      <title>{product.name} | Mi E-commerce</title>
+      <meta
+        name="description"
+        content={product.description.substring(0, 160)}
+      />
+      <meta
+        name="keywords"
+        content={`${product.name}, ${product.brand}, ${product.category}, comprar`}
+      />
+      <meta property="og:image" content={product.image} />
 
-            <div className="flex items-center mb-4">
-              <span className="text-yellow-500 text-xl">
-                {"★".repeat(Math.round(product.rating))}
-                {"☆".repeat(5 - Math.round(product.rating))}
-              </span>
-              <span className="text-gray-500 ml-2">({product.rating})</span>
+      <div className="container mx-auto mt-30 py-8">
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-4 flex items-center text-blue-600 hover:text-blue-800"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 mr-1"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+          Volver
+        </button>
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="w-full md:w-1/2">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-auto max-h-96 object-contain rounded-lg"
+              />
             </div>
-            <div className="mb-6">
-              {product.discount > 0 ? (
-                <div className="flex items-center gap-4">
-                  <span className="text-3xl font-bold text-red-600">
+            <div className="w-full md:w-1/2">
+              <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
+              <p className="text-gray-600 text-lg mb-4">{product.brand}</p>
+
+              <div className="flex items-center mb-4">
+                <span className="text-yellow-500 text-xl">
+                  {"★".repeat(Math.round(product.rating))}
+                  {"☆".repeat(5 - Math.round(product.rating))}
+                </span>
+                <span className="text-gray-500 ml-2">({product.rating})</span>
+              </div>
+              <div className="mb-6">
+                {product.discount > 0 ? (
+                  <div className="flex items-center gap-4">
+                    <span className="text-3xl font-bold text-red-600">
+                      ${product.price.toFixed(2)}
+                    </span>
+                    <span className="text-xl text-gray-500 line-through">
+                      $
+                      {(product.price * (1 + product.discount / 100)).toFixed(
+                        2
+                      )}
+                    </span>
+                    <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">
+                      {product.discount}% OFF
+                    </span>
+                  </div>
+                ) : (
+                  <span className="text-3xl font-bold">
                     ${product.price.toFixed(2)}
                   </span>
-                  <span className="text-xl text-gray-500 line-through">
-                    ${(product.price * (1 + product.discount / 100)).toFixed(2)}
-                  </span>
-                  <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">
-                    {product.discount}% OFF
-                  </span>
-                </div>
-              ) : (
-                <span className="text-3xl font-bold">
-                  ${product.price.toFixed(2)}
-                </span>
-              )}
-            </div>
-            <div className="mb-6">
-              <h3 className="font-bold text-lg mb-2">Descripción</h3>
-              <p className="text-gray-700">{product.description}</p>
-            </div>
+                )}
+              </div>
+              <div className="mb-6">
+                <h3 className="font-bold text-lg mb-2">Descripción</h3>
+                <p className="text-gray-700">{product.description}</p>
+              </div>
 
-            <div className="mb-6">
-              <h3 className="font-bold text-lg mb-2">Disponibilidad</h3>
-              {product.stock > 0 ? (
-                <span className="text-green-600">
-                  En stock ({product.stock} unidades)
-                </span>
-              ) : (
-                <span className="text-red-600">Agotado</span>
-              )}
+              <div className="mb-6">
+                <h3 className="font-bold text-lg mb-2">Disponibilidad</h3>
+                {product.stock > 0 ? (
+                  <span className="text-green-600">
+                    En stock ({product.stock} unidades)
+                  </span>
+                ) : (
+                  <span className="text-red-600">Agotado</span>
+                )}
+              </div>
+              <button
+                onClick={() => addToCart(product)}
+                disabled={product.stock <= 0}
+                className={`px-6 py-3 rounded-lg text-lg font-medium ${
+                  product.stock > 0
+                    ? "bg-blue-600 text-white hover:bg-blue-700"
+                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                }`}
+              >
+                {product.stock > 0 ? "Añadir al carrito" : "Sin stock"}
+              </button>
             </div>
-            <button
-              onClick={() => addToCart(product)}
-              disabled={product.stock <= 0}
-              className={`px-6 py-3 rounded-lg text-lg font-medium ${
-                product.stock > 0
-                  ? "bg-blue-600 text-white hover:bg-blue-700"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
-              }`}
-            >
-              {product.stock > 0 ? "Añadir al carrito" : "Sin stock"}
-            </button>
-            
           </div>
         </div>
+        <Sidebar />
       </div>
-      <Sidebar />
-    </div>
+    </>
   );
 };
 
